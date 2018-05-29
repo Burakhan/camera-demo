@@ -1,0 +1,8 @@
+{
+  "name": "camera-demo",
+  "app_id": "997d7d4b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
