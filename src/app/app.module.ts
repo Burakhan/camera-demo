@@ -8,27 +8,40 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
+import { SqLiteService } from '../providers/sqlite-service';
+import { SQLite } from '@ionic-native/sqlite'
+import { AndroidPermissions } from '@ionic-native/android-permissions'
+import { PhotosyncPageModule } from '../pages/photosync/photosync.module'
+import { HttpProvider } from '../providers/http/http';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
   ],
   imports: [
     BrowserModule,
+    PhotosyncPageModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Camera,
+    SQLite,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SqLiteService,
+    AndroidPermissions,
+    HttpProvider
   ]
 })
 export class AppModule {}
