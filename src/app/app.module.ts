@@ -14,6 +14,7 @@ import { SQLite } from '@ionic-native/sqlite'
 import { AndroidPermissions } from '@ionic-native/android-permissions'
 import { PhotosyncPageModule } from '../pages/photosync/photosync.module'
 import { HttpProvider } from '../providers/http/http';
+import { File } from '@ionic-native/file'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HttpProvider } from '../providers/http/http';
 
   ],
   providers: [
+    File,
     StatusBar,
     SplashScreen,
     Camera,

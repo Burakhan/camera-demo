@@ -25,7 +25,7 @@ export class SqLiteService {
       location: 'default'
     }).then((db: SQLiteObject) => {
       this.database = db
-      this.database.executeSql('CREATE TABLE IF NOT EXISTS photo (id INTEGER PRIMARY KEY AUTOINCREMENT, path TEXT, _id INTEGER, upload BOOLEAN DEFAULT false)', {})
+      this.database.executeSql('CREATE TABLE photo (id INTEGER PRIMARY KEY AUTOINCREMENT, path TEXT, _id INTEGER, upload BOOLEAN DEFAULT false)', {})
         .then((data) => {
           console.log('TABLE CREATED: ', data)
           // alert('db and table created ')
