@@ -8,32 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ol>
+    <li *ngFor="let item of photos">
+      {{ getPath4(item.path) }} ---  <br>
+      {{ item.path }} <br> <br>
+      <img *ngIf="img" [src]="getPath2(item.path)">
+      <img *ngIf="img" [src]="getPath(item.path)">
+      <div *ngIf="img" >{{ item.path }}</div>
+    </li>
+  </ol>
 
-    <button ion-item>
-      1 <br>
-      <img src="assets-library://asset/asset.JPG?id=28CD25CE-4C81-454D-8787-69EAA9911AE5&ext=JPG" alt="" width="100" height="100">
-    </button>
-    <button ion-item>
-      1 <br>
-      <img src="/asset/asset.JPG?id=33706B35-BD8E-45DF-A662-D65CD8C7C683&ext=JPG" alt="" width="100" height="100">
-    </button>
-    <button ion-item>
-      2 <br>
-      <img [src]="getPath('cdvfile://localhost/assets-library/asset/asset.JPG?id=28CD25CE-4C81-454D-8787-69EAA9911AE5&ext=JPG')" alt="" width="100" height="100">
-    </button>
-
-
-    <button ion-item *ngFor="let item of photos" (click)="itemTapped($event, item)">
-      <img *ngIf="item.path" [src]="getPath(item.path)" alt="" width="100" height="100">
-    </button>
-
-    <button ion-item *ngFor="let item of photos" (click)="itemTapped($event, item)">
-      <img *ngIf="item.path" [src]="getPath2(item.path)" alt="" width="100" height="100">
-    </button>
-
-    <button ion-item *ngFor="let item of photos" (click)="itemTapped($event, item)">
-      <img *ngIf="item.path" [src]="item.path" alt="" width="100" height="100">
-    </button>
-  </ion-list>
 </ion-content>

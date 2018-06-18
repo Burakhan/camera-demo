@@ -11,6 +11,8 @@ import { File } from '@ionic-native/file'
 export class ListPage implements OnInit {
   //selectedItem: any
   //photo: string[]
+  public img;
+  public img2;
   public photos: Array<{ id: string, path: string, _id: string }>
   private getPath3LOG = false;
   constructor (public navCtrl: NavController, public navParams: NavParams, private sqLite: SqLiteService, private sanitizer: DomSanitizer, private file:File) {
@@ -21,7 +23,6 @@ export class ListPage implements OnInit {
   ngOnInit (): void {
     this.sqLite.getPhotos().then((res) => {
       this.photos = res
-      console.log(res)
     })
   }
 
@@ -40,12 +41,25 @@ export class ListPage implements OnInit {
 
     this.file.resolveLocalFilesystemUrl(path).then(fileEntry => {
       if(this.getPath3LOG) {
-        console.log(fileEntry);
-        this.getPath3LOG = false;
+        //console.log(fileEntry);
+        //this.getPath3LOG = false;
       }
     });
     path = path.replace("assets-library://", "cdvfile://localhost/assets-library/")
     return this.sanitizer.bypassSecurityTrustUrl(path);
+  }
+
+  getPath4 (path) {
+    if(!path) {
+      return 'yok';
+    }
+    this.file.resolveLocalFilesystemUrl(path).then( fileEntry => {
+      //console.log(fileEntry.toInternalURL());
+      this.img = fileEntry.toInternalURL();
+
+    });
+
+    //return this.file.toInternalURL(path);
   }
 
   itemTapped (event, item) {
